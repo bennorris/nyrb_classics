@@ -20,4 +20,17 @@ class Book < ApplicationRecord
     books.sort_by {|book| book.last_name}
   end
 
+  def self.add_books(current_collection)
+    all_books = Book.all
+    unique_books = all_books - current_collection
+  end
+
+  def self.add_books_by_author(current_collection)
+    all_books = Book.all
+    unique_books = all_books - current_collection
+    unique_books.sort_by {|book| book.last_name}
+  end
+
+
+
 end

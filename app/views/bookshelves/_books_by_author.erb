@@ -1,0 +1,7 @@
+<%=form_for @bookshelf, :html => {:id => "edit-author-sorted"} do |f| %>
+  <%= f.collection_check_boxes :book_ids, Book.add_books_by_author(@bookshelf.books), :id, :author_with_title do |b|%>
+    <%= b.check_box + b.label %><br>
+    <% end %>
+  <%=f.submit %>
+
+  <% end %>

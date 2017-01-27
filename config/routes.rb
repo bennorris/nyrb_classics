@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   root to: 'application#home'
   get 'all_books', to: 'books#all'
   get 'catalog', to: 'books#catalog'
+  post 'search', to: 'books#search'
 
 end

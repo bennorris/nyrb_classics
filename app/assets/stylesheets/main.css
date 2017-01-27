@@ -1,7 +1,3 @@
-#title-sorted {
-  display: none;
-}
-
-#author-sorted {
+#author-sorted, #title-sorted, #edit-title-sorted, #edit-author-sorted {
   display: none;
 }

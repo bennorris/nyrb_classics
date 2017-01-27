@@ -17,6 +17,17 @@ class BookshelvesController < ApplicationController
     @bookshelf = Bookshelf.find_by_id(params[:id])
   end
 
+  def edit
+    @bookshelf = Bookshelf.find_by_id(params[:id])
+  end
+
+  def update
+    @bookshelf = Bookshelf.find_by_id(params[:id])
+    @bookshelf.book_ids += params[:bookshelf][:book_ids]
+    if @bookshelf.save
+      redirect_to bookshelf_path(@bookshelf)
+    end
+  end
 
 private
 

@@ -1,0 +1,15 @@
+ADD BOOKS!
+<br>
+Sort by:
+<button id="addByTitle">Title</button>
+<button id="addByAuthor">Author</button>
+<br>
+<br>
+<%= form_tag("/search", method: "post") do %>
+  <%= label_tag(:q, "Or search by author or title:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<%= render 'books_by_title' %>
+<%= render 'books_by_author' %>

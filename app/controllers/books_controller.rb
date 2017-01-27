@@ -11,4 +11,14 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def search
+    @res = Book.all.select {|book| book.author.include?(params[:q].titleize) ||book.title.include?(params[:q].titleize) }
+    if @res.length > 0
+      render partial: 'search_results'
+    else
+      redirect_to edit_bookshelf_path(current_user.bookshelf)
+    end
+
+  end
+
 end

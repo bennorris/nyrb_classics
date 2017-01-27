@@ -1,0 +1,8 @@
+<h1> You have <%=@bookshelf.books.length%> out of <%=Book.all.length%> NYRB Classics </h1>
+
+YOUR BOOKSHELF:
+<%@bookshelf.books.each do |book| %>
+  <h2><%=book.title%></h2>
+  <h2><%=book.author%></h2>
+  <img src='<%=book.image%>'></img>
+  <%end%>

@@ -1,3 +1,93 @@
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  margin-left: 1%;
+}
+
 #author-sorted, #title-sorted, #edit-title-sorted, #edit-author-sorted {
   display: none;
 }
+
+
+/* //// NAVBAR /////// */
+
+.navbar {
+  font-size: 1.5em;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbar a {
+  color: black;
+}
+
+/* JUMBOTRON BANNER */
+
+.jumbotron  {
+  text-align: center;
+  background-image:url('//cdn.shopify.com/s/files/1/0726/9203/collections/Header_Classics-R_2048x2048.jpg?v=1434997784');
+  background-repeat: no-repeat;
+  background-position:center;
+  background-color: white;
+  margin-top: 3%;
+}
+
+/* ////// BOOKSHELF PAGE ///// */
+
+#book-count-banner {
+  text-align:center;
+}
+
+#book-count-banner h1 {
+  font-size: 3.5em;
+}
+
+span.book-count {
+  color: darkred;
+}
+
+#add-books-button {
+  text-align: center;
+  margin-top: 1%;
+  margin-bottom: 4%;
+}
+
+.add-book-button {
+  color: slategray;
+  font-size: 1.5em;
+  border: 5px solid slategray;
+  padding: 0.5%;
+}
+
+.add-book-button:hover {
+  text-decoration: none;
+  color: white;
+  background-color: slategray;
+}
+
+.book-cover {
+  max-height: 400px;
+}
+
+.all-the-books {
+  background-color: slategray;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+
+.book-details {
+  color: black;
+  margin-bottom: 3%;
+}
+
+.book-details h2 {
+  margin-top: 4%;
+}
+
+.book-details h3 {
+  margin-top: 3%;
+}
+
+.book-details a {
+  color: aliceblue;
+}
+
+/*///////// ADD BOOKS /////// */

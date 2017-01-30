@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def home
-    if current_user.bookshelf
+    if current_user && current_user.bookshelf
       shelf_number = Bookshelf.find_by(user_id: current_user.id)
       redirect_to bookshelf_path(shelf_number)
     elsif current_user
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    user_path(current_user)
+    bookshelf_path(current_user.bookshelf)
   end
 
 end

@@ -53,7 +53,7 @@ class BookshelvesController < ApplicationController
     @bookshelf = Bookshelf.find_by_id(params[:bookshelf_id])
     @book = Book.find_by_id(params[:book_id])
     @bookshelf.books << @book
-    @bookshelf.save 
+    @bookshelf.save
   end
 
 private

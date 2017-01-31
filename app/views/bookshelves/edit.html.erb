@@ -1,15 +1,22 @@
-ADD BOOKS!
-<br>
-Sort by:
-<button id="addByTitle">Title</button>
-<button id="addByAuthor">Author</button>
-<br>
-<br>
-<%= form_tag("/search", method: "post") do %>
-  <%= label_tag(:q, "Or search by author or title:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="jumbotron" id="add-book-header">
+</div>
+
+
+<div class="col-md-12">
+  <h2>Search by title or author:</h2> <input type="text" id="testing"></input>&nbsp;<button id="entering">search</button><br><br><br>
+</div>
+<div class="col-md-12 browse-row">
+  <h2>Or browse by:</h2>
+  <button id="addByTitle">Title</button>
+  <button id="addByAuthor">Author</button>
+</div>
+
+<div id="add-success">
+</div>
+
+<div id="search-results">
+</div>
+
 
 <%= render 'books_by_title' %>
 <%= render 'books_by_author' %>

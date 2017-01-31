@@ -24,4 +24,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def show
+    @book = Book.find_by_id(params[:id])
+    respond_to do |f|
+      f.json {render json: @book}
+    end
+  end
+
 end

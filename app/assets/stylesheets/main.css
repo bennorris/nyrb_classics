@@ -1,6 +1,5 @@
 body {
   font-family: 'Josefin Sans', sans-serif;
-  margin-left: 1%;
 }
 
 #author-sorted, #title-sorted, #edit-title-sorted, #edit-author-sorted {
@@ -21,7 +20,7 @@ body {
 
 /* JUMBOTRON BANNER */
 
-.jumbotron  {
+#bookshelf-header  {
   text-align: center;
   background-image:url('//cdn.shopify.com/s/files/1/0726/9203/collections/Header_Classics-R_2048x2048.jpg?v=1434997784');
   background-repeat: no-repeat;
@@ -71,6 +70,8 @@ span.book-count {
   background-color: slategray;
   padding-top: 4%;
   padding-bottom: 4%;
+  margin: 0 auto;
+  margin-top: 4%;
 }
 
 .book-details {
@@ -90,4 +91,46 @@ span.book-count {
   color: aliceblue;
 }
 
+.fixed-img-div {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.fixed-img-div {
+  font-size: 1.5em;
+}
+
+#sort-options {
+  background-color: slategray;
+  width: 100%;
+  color: white;
+  margin: 0 auto;
+  font-size: 1.5em;
+  padding: 1%;
+  border-bottom: 1px solid white;
+}
+
+.shelf-sort-button {
+  color: white;
+  background-color: black;
+}
+
+
 /*///////// ADD BOOKS /////// */
+
+#add-book-header {
+  text-align: center;
+  background-image:url('//cdn.shopify.com/s/files/1/0726/9203/t/3/assets/logo-classics.png?8182576256857352121');
+  background-repeat: no-repeat;
+  background-position:center;
+  background-color: white;
+  margin-top: 3%;
+}
+
+.search-image-result {
+  max-height: 300px;
+}
+
+.browse-row {
+  margin-bottom: 2%;
+}

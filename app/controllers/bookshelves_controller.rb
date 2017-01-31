@@ -21,6 +21,12 @@ class BookshelvesController < ApplicationController
     @bookshelf = Bookshelf.find_by_id(params[:id])
     @user = User.find_by_id(@bookshelf.user.id)
     @catalog_length = Book.all.length
+
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @bookshelf}
+    end
+
   end
 
   def edit
@@ -41,7 +47,13 @@ class BookshelvesController < ApplicationController
     else
       redirect_to root_path
     end
+  end
 
+  def add_book
+    @bookshelf = Bookshelf.find_by_id(params[:bookshelf_id])
+    @book = Book.find_by_id(params[:book_id])
+    @bookshelf.books << @book
+    @bookshelf.save 
   end
 
 private

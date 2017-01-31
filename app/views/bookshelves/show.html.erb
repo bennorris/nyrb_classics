@@ -1,4 +1,4 @@
-<div class="jumbotron" >
+<div class="jumbotron" id="bookshelf-header">
   <div class="container">
     <img src="//cdn.shopify.com/s/files/1/0726/9203/t/3/assets/logo-classics.png?8182576256857352121" alt="NYRB Classics">
   </div>
@@ -11,20 +11,28 @@
       <h1> You have <span class="book-count"><%=@bookshelf.books.length%></span> out of <span class="book-count"><%=@catalog_length%></span> NYRB Classics</h1>
     </div>
   <div class="col-md-12" id="add-books-button">
-    <%=link_to "add books", edit_bookshelf_path(@bookshelf), class: 'add-book-button'  %>
+    <%=link_to "add books", edit_bookshelf_path(@bookshelf), class: 'add-book-button' %>
   </div>
 <% else %>
   <h1> <%= @user.email %> has <span class="book-count"><%=@bookshelf.books.length%></span> out of <span class="book-count"><%=@catalog_length%></span> NYRB Classics </h1>
 <% end %>
 </div>
 
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" id="sort-options">
+  <p> Sort by:&nbsp;&nbsp;<button class="shelf-sort-button">author</button>&nbsp;&nbsp;<button class="shelf-sort-button">title</button>
+</div>
+
 <div class="row all-the-books">
 <%@bookshelf.books.each do |book| %>
-  <div class="col-md-3 book-details">
-    <img class="book-cover" src='<%=book.image%>'></img><br>
+  <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details">
+    <div id="img-placeholder-<%=book.id%>">
+    <img class="book-cover" src='<%=book.image%>' style=''></img><br>
+  </div>
     <h2><%=book.title%></h2>
     <h3>by <%=book.author%></h2>
-    <a href="<%=book.link%>">more information</a>
+    <a href="#" id="<%=book.id%>">more information</a>
 </div>
   <%end%>
 </div>

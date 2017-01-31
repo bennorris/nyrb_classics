@@ -19,16 +19,25 @@ module ApplicationHelper
         book.link = link
         book.image = image
         book.save
-
-        # nyrb_book = [title,author,image,link]
-        #
-        # all_books << nyrb_book
       end
         i +=1
     end
+  end
 
+  def self.get_book_description
+    @books = Book.all
 
+    @books.each do |book|
+      link = book.link
+      url = link.split('://')[1]
+      new_proto = "https://"
+      link = new_proto + url
 
+      doc = Nokogiri::HTML(open(link))
+      description = doc.search('.span8 .description p').text
+      book.description = description
+      book.save
+    end
   end
 
 end

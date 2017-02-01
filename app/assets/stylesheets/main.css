@@ -149,3 +149,26 @@ span.book-count {
 .book-details {
   margin-bottom: 1%;
 }
+
+#search-results {
+  background-color: slategray;
+  padding-left: 2%;
+  padding-bottom: 2%;
+}
+
+.hidden-class {
+  display: none;
+}
+
+.visible-class {
+  display: inline;
+}
+
+.contain-search {
+  height: 300px;
+  display: block;
+}
+
+.book-details button {
+  margin-top: 2%;
+}

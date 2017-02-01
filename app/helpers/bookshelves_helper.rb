@@ -4,4 +4,6 @@ module BookshelvesHelper
     current_user && current_user.bookshelf.id.to_i == params[:id].to_i
   end
 
+
+
 end

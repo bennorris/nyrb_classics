@@ -72,6 +72,7 @@ span.book-count {
   padding-bottom: 4%;
   margin: 0 auto;
   margin-top: 4%;
+  padding-left: 2%;
 }
 
 .book-details {
@@ -115,6 +116,12 @@ span.book-count {
   background-color: black;
 }
 
+.col-xs-12 {
+  margin: 0 auto;
+}
+
+
+
 
 /*///////// ADD BOOKS /////// */
 
@@ -133,4 +140,12 @@ span.book-count {
 
 .browse-row {
   margin-bottom: 2%;
+}
+
+.book-details .back-to-shelf {
+  color: darkred;
+}
+
+.book-details {
+  margin-bottom: 1%;
 }

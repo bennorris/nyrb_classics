@@ -1,6 +1,6 @@
-$(document).ready(function() {
+var appendBooks = function() {
 
-$('.all-the-books a').on('click', function(e) {
+$(document).on('click', '.all-the-books a', function(e) {
   e.preventDefault();
   var id = $(this).attr('id');
 
@@ -13,15 +13,18 @@ $('.all-the-books a').on('click', function(e) {
 
 } else {
   $.getJSON( `/books/${id}.json`, function(res) {
-    $(`#img-placeholder-${id}`).addClass('fixed-img-div');
-    $(`#img-placeholder-${id} img`).hide();
-    $(`#img-placeholder-${id}`).append(`<p>${res.description}</p>`);
-    $(`#img-placeholder-${id}`).addClass('clicked');
-    $(`#${id}`).text('back');
-  });
-
+      $(`#img-placeholder-${id}`).addClass('fixed-img-div');
+      $(`#img-placeholder-${id} img`).hide();
+      $(`#img-placeholder-${id}`).append(`<p>${res.title}<br><br>by ${res.author}<br><br>${res.description}</p>`);
+      $(`#img-placeholder-${id}`).addClass('clicked');
+      $(`#${id}`).text('back');
+    });
+   }
+  })
 }
 
-})
 
+
+$(document).ready(function() {
+  appendBooks();
 })

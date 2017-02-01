@@ -24,17 +24,33 @@
   <p> Sort by:&nbsp;&nbsp;<button class="shelf-sort-button">author</button>&nbsp;&nbsp;<button class="shelf-sort-button">title</button>
 </div>
 
-<div class="row all-the-books">
-<%@bookshelf.books.each do |book| %>
-  <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details">
-    <div id="img-placeholder-<%=book.id%>">
-    <img class="book-cover" src='<%=book.image%>' style=''></img><br>
-  </div>
-    <h2><%=book.title%></h2>
-    <h3>by <%=book.author%></h2>
-    <a href="#" id="<%=book.id%>">more information</a>
-</div>
-  <%end%>
-</div>
+<!-- <div class="container-fluid"> -->
+  <div class="all-the-books">
+    <div class="row">
+    <!-- <%count = 0.0%> -->
+    <%@bookshelf.books.each do |book| %>
+      <!-- <% if count == 0.0 %>
+        <div class="row">
+      <% end %> -->
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details">
+          <div id="img-placeholder-<%=book.id%>">
+            <img class="book-cover" src='<%=book.image%>' style=''></img><br>
+          </div>
+            <!-- <h2><%=book.title%></h2>
+            <h3>by <%=book.author%></h2> -->
+            <br>
+            <a href="" id="<%=book.id%>">more information</a>
+          </div>
+
+        <!-- <% if count == 3.0 %>
+          </div>
+          <% count = 0.0 %>
+        <% else %>
+         <% count += 1.0 %>
+         <% end %> -->
+      <%end%>
+      </div>
+    </div>
+<!-- </div> -->
 
   <br>

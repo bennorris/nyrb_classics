@@ -9,7 +9,7 @@ var searchBooks = function() {
     $.getJSON( "/all_books.json", function(res) {
       for (var i=0 ; i < res.length; i++) {
         if ( res[i].author.toLowerCase().includes(term.toLowerCase()) || res[i].title.toLowerCase().includes(term.toLowerCase()) ) {
-          $('#search-results').append(`<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details ${res[i].id}"><img class="search-image-result" src="${res[i].image}"></img><br><h1>${res[i].title}</h1><h3>${res[i].author}</h3><button id="${res[i].id}" class="add-to-list-button">add to your shelf</button></div>
+          $('#search-results').append(`<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details book-num-${res[i].id}"><img class="search-image-result" src="${res[i].image}"></img><br><h1>${res[i].title}</h1><h3>${res[i].author}</h3><button id="${res[i].id}" class="add-to-list-button">add to your shelf</button></div>
 `);
         foundBooks.push(res[i]);
         }
@@ -33,7 +33,7 @@ var addBookToShelf = function() {
 
       $.post('/add_new_book', values)
       .done(function(res) {
-        $(`div.${book_id}`).html('<h1>Successfully<br>Added!</h1>');
+        $(`.book-num-${book_id}`).html('<h1>Successfully<br>Added!</h1><br><h1><a class="back-to-shelf" href="/">back to your bookshelf</a></h1>');
       })
   })
 }

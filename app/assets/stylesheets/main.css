@@ -120,7 +120,13 @@ span.book-count {
   margin: 0 auto;
 }
 
+a.nyrb-link {
+  color: floralwhite;
+}
 
+a.nyrb-link:hover {
+  color: tan;
+}
 
 
 /*///////// ADD BOOKS /////// */

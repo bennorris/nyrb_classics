@@ -69,6 +69,28 @@ $(document).on('click', '.sort-collection-author', function() {
     })
   })
 
+  $(document).on('click', '.sort-collection-date-old', function() {
+    var id = window.location.pathname.split('/').slice(-1)[0];
+    $.getJSON(`/bookshelf/${id}.json`, function(res) {
+      var allBooks = res.books;
+      $('.all-the-books .row').html('');
+      for (var i = 0; i < allBooks.length; i++) {
+        $('.all-the-books .row').append(formatShelf(allBooks[i]));
+      }
+    })
+  })
+
+  $(document).on('click', '.sort-collection-date-new', function() {
+    var id = window.location.pathname.split('/').slice(-1)[0];
+    $.getJSON(`/bookshelf/${id}.json`, function(res) {
+      var allBooks = res.books;
+      $('.all-the-books .row').html('');
+      for (var i = allBooks.length - 1 ; i >= 1; i--) {
+        $('.all-the-books .row').append(formatShelf(allBooks[i]));
+      }
+    })
+  })
+
 
 
 

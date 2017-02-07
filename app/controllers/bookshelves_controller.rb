@@ -38,14 +38,22 @@ class BookshelvesController < ApplicationController
   end
 
   def update
-    if logged_in?
-      @bookshelf = Bookshelf.find_by_id(params[:id])
-      @bookshelf.book_ids += params[:bookshelf][:book_ids]
-      if @bookshelf.save
-        redirect_to bookshelf_path(@bookshelf)
-      end
-    else
-      redirect_to root_path
+    # if logged_in?
+    #   @bookshelf = Bookshelf.find_by_id(params[:id])
+    #   @bookshelf.book_ids += params[:bookshelf][:book_ids]
+    #   if @bookshelf.save
+    #     redirect_to bookshelf_path(@bookshelf)
+    #   end
+    # else
+    #   redirect_to root_path
+    # end
+    @bookshelf = Bookshelf.find_by_id(params[:id])
+
+    @delete_book = Book.find_by_id(params['delete_id'].to_i)
+    @bookshelf.books.delete(@delete_book)
+    @bookshelf.save
+    respond_to do |f|
+      f.json {render json: @bookshelf}
     end
   end
 

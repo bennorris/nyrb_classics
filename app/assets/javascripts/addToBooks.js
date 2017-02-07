@@ -7,7 +7,7 @@
       var letter = book.author.split(' ').slice(-1)[0].split('')[0];
       return `<div class="letter-${letter} col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details found-book book-num-${book.id}"><div class="contain-search"><img class="search-image-result" src="${book.image}"></img><br><div class="hidden-class title-author"><h1>${book.title}</h1><h3>${book.author}</h3></div></div><button id="${book.id}" class="more-info-search">title / author</button><br><button id="${book.id}" class="add-to-list-button">add to your shelf</button></div>`
     } else if (field == "title") {
-      var letter = book.title.split(' ')[0];
+      var letter = book.title.split(' ')[0].split('')[0];
       return `<div class="letter-${letter} col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details found-book book-num-${book.id}"><div class="contain-search"><img class="search-image-result" src="${book.image}"></img><br><div class="hidden-class title-author"><h1>${book.title}</h1><h3>${book.author}</h3></div></div><button id="${book.id}" class="more-info-search">title / author</button><br><button id="${book.id}" class="add-to-list-button">add to your shelf</button></div>`
     }
   }
@@ -24,19 +24,20 @@
 
   var appendBooksByTitle = function() {
     $(document).on('click', '#addByTitle', function() {
+      searchbar();
       $("#search-results").html('');
       $.getJSON('/catalog.json', function(res) {
         for (var i = 0; i < res.length; i ++ ) {
           $('#search-results').append(formatSearchPaginateShelf(res[i], "title"));
         }
       })
-      $('#search-results').append('<div class="letter-bar"><p>A&nbsp;B&nbsp;C&nbsp;D&nbsp;E&nbsp;F&nbsp;G&nbsp;H&nbsp;I&nbsp;J&nbsp;K&nbsp;L&nbsp;M&nbsp;N&nbsp;O&nbsp;P&nbsp;Q&nbsp;R&nbsp;S&nbsp;T&nbsp;U&nbsp;V&nbsp;W&nbsp;X&nbsp;Y&nbsp;Z</p></div>');
     })
   }
 
 
 var appendBooksByAuthor = function() {
   $(document).on('click', '#addByAuthor', function() {
+    searchbar();
     $("#search-results").html('');
     $.getJSON('/catalog.json', function(res) {
       var sorted = res.sort(sortByAuthor);
@@ -64,9 +65,16 @@ var jumpByLetter = function() {
     var letter = $(this).html();
     $('html, body').animate({
         scrollTop: $(`.letter-${letter}`).offset().top
-    }, 4000);
+    }, 2000);
 
   })
+
+  $(document).on('click', '.back-to-top', function() {
+    $('html, body').animate({
+        scrollTop: $(`.browse-row`).offset().top
+    }, 2000);
+  })
+
 }
 
 
@@ -75,6 +83,5 @@ var jumpByLetter = function() {
 $(document).ready(function() {
   appendBooksByTitle();
   appendBooksByAuthor();
-  searchbar();
   jumpByLetter();
 })

@@ -133,6 +133,9 @@ a.nyrb-link:hover {
   color: tan;
 }
 
+.fa-times:hover {
+  color: red;
+}
 
 /*///////// ADD BOOKS /////// */
 
@@ -244,7 +247,7 @@ a.nyrb-link:hover {
   padding-left: 1%;
 }
 
-.letter:hover {
+.letter:hover, .back-to-top:hover {
   color: yellow;
   cursor: pointer;
 }

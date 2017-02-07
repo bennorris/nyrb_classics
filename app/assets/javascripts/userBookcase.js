@@ -19,7 +19,7 @@ var sortBooksByTitle = function(a,b) {
 }
 
 var formatShelf = function(book) {
-  return `<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details"><div id="img-placeholder-${book.id}"><img class="book-cover" src='${book.image}' style=''></img><br></div><br><a href="" class="more-book-info" id="${book.id}">more information</a></div>`
+  return `<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details"><div id="img-placeholder-${book.id}"><img class="book-cover" src='${book.image}' style=''></img><br></div><br><a href="" class="more-book-info" id="${book.id}">more information</a><br><a href=""><i class="fa fa-times delete-book ${book.id}" aria-hidden="true"></i></a></div>`
 }
 
 var appendBooks = function() {
@@ -45,9 +45,11 @@ var appendBooks = function() {
     })
   }
 
+var clearOldSearch = function() {
 $(document).on('click', '.add-book-button', function() {
   $('#search-results').html('');
-})
+  })
+}
 
 $(document).on('click', '.sort-collection-author', function() {
   var id = window.location.pathname.split('/').slice(-1)[0];
@@ -95,9 +97,31 @@ $(document).on('click', '.sort-collection-author', function() {
     })
   })
 
+  $(document).on('click', '.delete-book', function(e) {
+    e.preventDefault();
+    confirm('Are you sure you want to delete this book?');
+    var id = window.location.pathname.split('/').slice(-1)[0];
+    var bookToDelete = $(this)['context']['classList'][3];
 
+    $.ajax({
+      url: `/bookshelf/${id}.json`,
+      data: {'delete_id': bookToDelete},
+      type: 'PATCH'
+    })
+
+    $.getJSON(`/bookshelf/${id}.json`, function(res) {
+      $('.all-the-books .row').html('');
+      var allBooks = res.books;
+
+      for (var i = 0; i < allBooks.length; i++) {
+        $('.all-the-books .row').append(formatShelf(allBooks[i]));
+        }
+      })  
+})
 
 
 $(document).ready(function() {
   appendBooks();
+  clearOldSearch();
+
 })

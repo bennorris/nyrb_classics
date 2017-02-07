@@ -1,5 +1,10 @@
 body {
   font-family: 'Josefin Sans', sans-serif;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 #author-sorted, #title-sorted, #edit-title-sorted, #edit-author-sorted {
@@ -136,6 +141,8 @@ a.nyrb-link:hover {
   background-image:url('//cdn.shopify.com/s/files/1/0726/9203/t/3/assets/logo-classics.png?8182576256857352121');
   background-repeat: no-repeat;
   background-position:center;
+  background-size: contain;
+  background-position: center;
   background-color: white;
   margin-top: 3%;
 }
@@ -145,7 +152,14 @@ a.nyrb-link:hover {
 }
 
 .browse-row {
-  margin-bottom: 2%;
+  background-color: white;
+  padding-bottom: 2%;
+  margin-top: 0;
+}
+
+.browse-row h2 {
+  margin-top: 0;
+  padding-top: 2%;
 }
 
 .book-details .back-to-shelf {
@@ -177,4 +191,60 @@ a.nyrb-link:hover {
 
 .book-details button {
   margin-top: 2%;
+}
+
+.color-contain {
+  height: 100%;
+  background-color: slategray;
+}
+
+.search-bar-strip {
+  background-color: black;
+  margin-bottom: 0;
+}
+
+.search-bar-strip h2 {
+  color: white;
+  margin-top: 0;
+  padding-top: 2%;
+}
+
+.found-book {
+  padding-top: 2%;
+}
+
+.letter-bar {
+  text-align: center;
+  display: none;
+  font-size: 1.25em;
+  color: white;
+  background-color: black;
+  z-index: 1000;
+}
+
+.letter-bar.fixed {
+  display: block;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+
+}
+
+.letter-bar p {
+  padding-top: 2%;
+}
+
+#contain-search-results {
+  overflow-y:scroll;
+  width: 100%;
+}
+
+.letter {
+  padding-right: 1%;
+  padding-left: 1%;
+}
+
+.letter:hover {
+  color: yellow;
+  cursor: pointer;
 }

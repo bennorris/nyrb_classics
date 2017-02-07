@@ -5,8 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'angular-rails-templates'
-
+gem 'kaminari'
 gem 'devise'
 gem 'active_model_serializers'
 gem 'pry'

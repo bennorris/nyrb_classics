@@ -45,6 +45,10 @@ var appendBooks = function() {
     })
   }
 
+$(document).on('click', '.add-book-button', function() {
+  $('#search-results').html('');
+})
+
 $(document).on('click', '.sort-collection-author', function() {
   var id = window.location.pathname.split('/').slice(-1)[0];
   $.getJSON(`/bookshelf/${id}.json`, function(res) {

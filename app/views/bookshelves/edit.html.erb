@@ -1,22 +1,28 @@
 <div class="jumbotron" id="add-book-header">
 </div>
 
+<div class="color-contain">
+  <div class="col-md-12 search-bar-strip">
+    <h2>Search by title or author:</h2> <input type="text" id="testing"></input>&nbsp;<button id="entering">search</button><br><br><br>
+  </div>
 
-<div class="col-md-12">
-  <h2>Search by title or author:</h2> <input type="text" id="testing"></input>&nbsp;<button id="entering">search</button><br><br><br>
+  <div class="col-md-12 browse-row">
+    <h2>Or browse the catalog by:</h2>
+    <button id="addByTitle">Title</button>
+    <button id="addByAuthor">Author</button>
+  </div>
+
+  <div id="add-success">
+  </div>
+
+  <div id="contain-search-results">
+    <div class="letter-bar"><p>JUMP TO: <span class="letter">A</span><span class="letter">B</span><span class="letter">C</span><span class="letter">D</span><span class="letter">E</span><span class="letter">F</span>
+      <span class="letter">G</span><span class="letter">H</span><span class="letter">I</span><span class="letter">J</span><span class="letter">K</span><span class="letter">L</span><span class="letter">M</span>
+      <span class="letter">N</span><span class="letter">O</span> <span class="letter">P</span> <span class="letter">Q</span> <span class="letter">R</span> <span class="letter">S</span>
+      <span class="letter">T</span> <span class="letter">U</span> <span class="letter">V</span> <span class="letter">W</span> <span class="letter">X</span> <span class="letter">Y</span> <span class="letter">Z</span>
+    </div>
+    <div id="search-results" class="row">
+    </div>
+  </div>
+
 </div>
-<div class="col-md-12 browse-row">
-  <h2>Or browse by:</h2>
-  <button id="addByTitle">Title</button>
-  <button id="addByAuthor">Author</button>
-</div>
-
-<div id="add-success">
-</div>
-
-<div id="search-results" class="row">
-</div>
-
-
-<%= render 'books_by_title' %>
-<%= render 'books_by_author' %>

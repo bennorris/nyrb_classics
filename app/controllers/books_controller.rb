@@ -9,6 +9,10 @@ class BooksController < ApplicationController
 
   def catalog
     @books = Book.all
+
+    respond_to do |f|
+      f.json {render json: @books}
+    end
   end
 
   def search

@@ -9,7 +9,7 @@ var searchBooks = function() {
     $.getJSON( "/all_books.json", function(res) {
       for (var i=0 ; i < res.length; i++) {
         if ( res[i].author.toLowerCase().includes(term.toLowerCase()) || res[i].title.toLowerCase().includes(term.toLowerCase()) ) {
-          $('#search-results').append(`<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details book-num-${res[i].id}"><div class="contain-search"><img class="search-image-result" src="${res[i].image}"></img><br><div class="hidden-class title-author"><h1>${res[i].title}</h1><h3>${res[i].author}</h3></div></div><button id="${res[i].id}" class="more-info-search">title / author</button><br><button id="${res[i].id}" class="add-to-list-button">add to your shelf</button></div>
+          $('#search-results').append(`<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details found-book book-num-${res[i].id}"><div class="contain-search"><img class="search-image-result" src="${res[i].image}"></img><br><div class="hidden-class title-author"><h1>${res[i].title}</h1><h3>${res[i].author}</h3></div></div><button id="${res[i].id}" class="more-info-search">title / author</button><br><button id="${res[i].id}" class="add-to-list-button">add to your shelf</button></div>
 `);
         foundBooks.push(res[i]);
         }

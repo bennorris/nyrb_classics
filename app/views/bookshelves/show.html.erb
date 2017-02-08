@@ -15,9 +15,9 @@
   </div>
 <% else %>
   <h1> <%= @user.email %> has <span class="book-count"><%=@bookshelf.books.length%></span> out of <span class="book-count"><%=@catalog_length%></span> NYRB Classics </h1>
+  </div>
 <% end %>
 </div>
-
 
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" id="sort-options">
@@ -32,7 +32,7 @@
             <img class="book-cover" src='<%=book.image%>' style=''></img><br>
           </div>
             <br>
-            <a href="" class="more-book-info" id="<%=book.id%>">more information</a><br><a href=""><i class="fa fa-times delete-book <%=book.id%>" aria-hidden="true"></i></a> 
+            <a href="" class="more-book-info" id="<%=book.id%>">more information</a><br><% if current_user.bookshelf == @bookshelf %><a href=""><i class="fa fa-times delete-book <%=book.id%>" aria-hidden="true"></i></a> <%end%>
           </div>
       <%end%>
       </div>

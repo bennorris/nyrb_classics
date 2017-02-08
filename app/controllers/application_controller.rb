@@ -12,7 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    bookshelf_path(current_user.bookshelf)
+    if current_user.bookshelf
+      bookshelf_path(current_user.bookshelf)
+    else
+      new_bookshelf_path
+    end
   end
 
 end

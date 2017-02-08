@@ -18,8 +18,31 @@ var sortBooksByTitle = function(a,b) {
   }
 }
 
+var checkUser = function() {
+  $.get('/current_user.json', function(result){
+    userId = result.id;
+  });
+}
+
 var formatShelf = function(book) {
   return `<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details"><div id="img-placeholder-${book.id}"><img class="book-cover" src='${book.image}' style=''></img><br></div><br><a href="" class="more-book-info" id="${book.id}">more information</a><br><a href=""><i class="fa fa-times delete-book ${book.id}" aria-hidden="true"></i></a></div>`
+}
+
+var formatOtherUserShelf = function(book) {
+  return `<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details"><div id="img-placeholder-${book.id}"><img class="book-cover" src='${book.image}' style=''></img><br></div><br><a href="" class="more-book-info" id="${book.id}">more information</a></div>`
+}
+
+var bookAddLoop = function(currentBookcase, sorted) {
+  if (currentBookcase == userId) {
+    for (var i = 0; i < sorted.length; i++) {
+        $('.all-the-books .row').append(formatShelf(sorted[i]));
+      }
+  }
+  else {
+    for (var i = 0; i < sorted.length; i++) {
+      $('.all-the-books .row').append(formatOtherUserShelf(sorted[i]));
+    }
+  }
 }
 
 var appendBooks = function() {
@@ -57,11 +80,9 @@ $(document).on('click', '.sort-collection-author', function() {
     var allBooks = res.books;
     var sorted = allBooks.sort(sortBooks);
     $('.all-the-books .row').html('');
-    for (var i = 0; i < sorted.length; i++) {
-      $('.all-the-books .row').append(formatShelf(sorted[i]));
-    }
-    })
+    bookAddLoop(id, sorted);
   })
+})
 
   $(document).on('click', '.sort-collection-title', function() {
     var id = window.location.pathname.split('/').slice(-1)[0];
@@ -69,9 +90,7 @@ $(document).on('click', '.sort-collection-author', function() {
       var allBooks = res.books;
       var sorted = allBooks.sort(sortBooksByTitle);
       $('.all-the-books .row').html('');
-      for (var i = 0; i < sorted.length; i++) {
-        $('.all-the-books .row').append(formatShelf(sorted[i]));
-      }
+      bookAddLoop(id, sorted);
     })
   })
 
@@ -80,9 +99,7 @@ $(document).on('click', '.sort-collection-author', function() {
     $.getJSON(`/bookshelf/${id}.json`, function(res) {
       var allBooks = res.books;
       $('.all-the-books .row').html('');
-      for (var i = 0; i < allBooks.length; i++) {
-        $('.all-the-books .row').append(formatShelf(allBooks[i]));
-      }
+      bookAddLoop(id, allBooks);
     })
   })
 
@@ -91,8 +108,15 @@ $(document).on('click', '.sort-collection-author', function() {
     $.getJSON(`/bookshelf/${id}.json`, function(res) {
       var allBooks = res.books;
       $('.all-the-books .row').html('');
-      for (var i = allBooks.length - 1 ; i >= 1; i--) {
-        $('.all-the-books .row').append(formatShelf(allBooks[i]));
+      if (id == userId) {
+        for (var i = allBooks.length - 1 ; i >= 0; i--) {
+          $('.all-the-books .row').append(formatShelf(allBooks[i]));
+        }
+      }
+      else {
+        for (var i = allBooks.length - 1 ; i >= 0; i--) {
+          $('.all-the-books .row').append(formatOtherUserShelf(allBooks[i]));
+        }
       }
     })
   })
@@ -116,12 +140,12 @@ $(document).on('click', '.sort-collection-author', function() {
       for (var i = 0; i < allBooks.length; i++) {
         $('.all-the-books .row').append(formatShelf(allBooks[i]));
         }
-      })  
+      })
 })
 
 
 $(document).ready(function() {
+  checkUser();
   appendBooks();
   clearOldSearch();
-
 })

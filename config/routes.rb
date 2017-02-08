@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get 'catalog', to: 'books#catalog'
   post 'search', to: 'books#search'
   post 'add_new_book', to: 'bookshelves#add_book'
+  get 'current_user' => "users#current_user_info"
 
 end

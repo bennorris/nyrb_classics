@@ -2,16 +2,19 @@ class BookshelvesController < ApplicationController
   include BookshelvesHelper
 
   def new
+    if current_user.bookshelf
+      redirect_to root_path
+    end
+    @new_bookshelf = Bookshelf.new
   end
 
   def create
-    if current_user
+    if current_user && !current_user.bookshelf
       @bookshelf = Bookshelf.new
-      @bookshelf.user = current_user
-      @bookshelf.book_ids = params[:bookshelf][:book_ids]
-      if @bookshelf.save
-        redirect_to bookshelf_path(@bookshelf)
-      end
+      current_user.bookshelf = @bookshelf
+      current_user.save
+      @bookshelf.save
+      redirect_to bookshelf_path(@bookshelf)
     else
       redirect_to root_path
     end
@@ -38,30 +41,35 @@ class BookshelvesController < ApplicationController
   end
 
   def update
-    # if logged_in?
-    #   @bookshelf = Bookshelf.find_by_id(params[:id])
-    #   @bookshelf.book_ids += params[:bookshelf][:book_ids]
-    #   if @bookshelf.save
-    #     redirect_to bookshelf_path(@bookshelf)
-    #   end
-    # else
-    #   redirect_to root_path
-    # end
     @bookshelf = Bookshelf.find_by_id(params[:id])
 
-    @delete_book = Book.find_by_id(params['delete_id'].to_i)
-    @bookshelf.books.delete(@delete_book)
-    @bookshelf.save
-    respond_to do |f|
-      f.json {render json: @bookshelf}
-    end
+    if logged_in?
+      @delete_book = Book.find_by_id(params['delete_id'].to_i)
+      @bookshelf.books.delete(@delete_book)
+      @bookshelf.save
+   else
+      redirect_to root_path
+   end
+
+   respond_to do |f|
+     f.json {render json: @bookshelf}
+   end
   end
 
   def add_book
-    @bookshelf = Bookshelf.find_by_id(params[:bookshelf_id])
-    @book = Book.find_by_id(params[:book_id])
-    @bookshelf.books << @book
-    @bookshelf.save
+    if logged_in?
+      @bookshelf = Bookshelf.find_by_id(params[:id])
+      @book = Book.find_by_id(params[:book_id])
+
+      if !@bookshelf.books.include?(@book)
+        @bookshelf.books << @book
+        @bookshelf.save
+      else
+        render :status => 500
+      end
+    else
+      redirect_to root_path
+    end
   end
 
 private

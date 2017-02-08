@@ -1,7 +1,3 @@
-  var formatSearchShelf = function(book) {
-    return `<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 book-details found-book book-num-${book.id}"><div class="contain-search"><img class="search-image-result" src="${book.image}"></img><br><div class="hidden-class title-author"><h1>${book.title}</h1><h3>${book.author}</h3></div></div><button id="${book.id}" class="more-info-search">title / author</button><br><button id="${book.id}" class="add-to-list-button">add to your shelf</button></div>`
-  }
-
   var formatSearchPaginateShelf = function(book, field) {
     if (field == "author") {
       var letter = book.author.split(' ').slice(-1)[0].split('')[0];
@@ -66,7 +62,6 @@ var jumpByLetter = function() {
     $('html, body').animate({
         scrollTop: $(`.letter-${letter}`).offset().top
     }, 2000);
-
   })
 
   $(document).on('click', '.back-to-top', function() {
@@ -74,9 +69,7 @@ var jumpByLetter = function() {
         scrollTop: $(`.browse-row`).offset().top
     }, 2000);
   })
-
 }
-
 
 
 

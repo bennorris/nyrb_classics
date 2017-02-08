@@ -23,6 +23,10 @@ html {
   color: black;
 }
 
+.nav>li>a:focus, .nav>li>a:hover {
+  color: brown;
+}
+
 /* JUMBOTRON BANNER */
 
 #bookshelf-header  {
@@ -38,6 +42,7 @@ html {
 
 #book-count-banner {
   text-align:center;
+  background-color: white;
 }
 
 #book-count-banner h1 {
@@ -136,6 +141,8 @@ a.nyrb-link:hover {
 .fa-times:hover {
   color: red;
 }
+
+
 
 /*///////// ADD BOOKS /////// */
 
@@ -250,4 +257,139 @@ a.nyrb-link:hover {
 .letter:hover, .back-to-top:hover {
   color: yellow;
   cursor: pointer;
+}
+
+/*////// LOG IN FORM ////*/
+
+.log-in-form {
+  text-align: center;
+}
+
+.log-in-form input[type=checkbox] {
+  width:20px;
+  height:20px;
+}
+
+.log-in-form h2 {
+  color: brown;
+}
+
+.log-in-fields {
+  font-size: 2em;
+  margin: 2%;
+}
+
+.log-in-button {
+  font-size: 1.75em;
+}
+
+.log-in-button input {
+  color: white;
+  background-color: brown;
+  border: 3px solid white;
+  padding: 0.5%;
+  margin-bottom: 1%;
+}
+
+.log-in-button input:hover {
+  color: brown;
+  background-color: white;
+  border: 3px solid brown;
+}
+
+.log-in-links {
+  font-size: 1.25em;
+}
+
+.log-in-links a {
+  color: slategray;
+}
+
+.log-in-links a:hover {
+  color: blue;
+}
+
+/* //// LANDING PAGE /////*/
+
+.tracker-description {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.tracker-description a {
+  color: brown;
+}
+
+.tracker-description a:hover {
+  color: blue;
+}
+
+/* ////// SIGN UP PAGE ///// */
+
+.sign-up-form {
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+.sign-up-field {
+  font-size: 2em;
+  padding: 1%;
+}
+
+.sign-up-actions {
+  font-size: 1.5em;
+}
+
+.sign-up-actions input {
+  color: white;
+  background-color: brown;
+  border: 3px solid white;
+  padding: 0.5%;
+  margin-bottom: 1%;
+}
+
+.sign-up-actions input:hover {
+  color: brown;
+  background-color: white;
+  border: 3px solid brown;
+}
+
+.sign-up-form a {
+  color: slategray;
+  font-size: 1.5em;
+}
+
+.sign-up-form a:hover {
+  color: brown;
+}
+
+/* ///// NEW BOOKCASE //////*/
+
+.new-shelf-intro {
+  text-align: center;
+  background-color: white;
+}
+
+.new-shelf-intro h1 {
+  color: brown;
+}
+
+.new-shelf-intro h2 {
+  padding-bottom: 2%;
+}
+
+.new-shelf-intro a {
+  font-size: 2em;
+  padding: 1%;
+  color: white;
+  background-color: brown;
+  border: 3px solid white;
+}
+
+.new-shelf-intro a:hover {
+  color: brown;
+  background-color: white;
+  border: 3px solid brown;
+  cursor:pointer;
+  text-decoration: none;
 }

@@ -49,7 +49,7 @@ html {
   font-size: 3.5em;
 }
 
-span.book-count {
+span.book-count, span.total-book-count {
   color: darkred;
 }
 
@@ -221,6 +221,7 @@ a.nyrb-link:hover {
 
 .found-book {
   padding-top: 2%;
+  height: 400px; 
 }
 
 .letter-bar {

@@ -21,7 +21,10 @@ var sortBooksByTitle = function(a,b) {
 var checkUser = function() {
   $.get('/current_user.json', function(result){
     userId = result.id;
-  });
+  })
+  .fail(function() {
+    userId = "Fail";
+  })
 }
 
 var formatShelf = function(book) {
@@ -123,24 +126,25 @@ $(document).on('click', '.sort-collection-author', function() {
 
   $(document).on('click', '.delete-book', function(e) {
     e.preventDefault();
-    confirm('Are you sure you want to delete this book?');
-    var id = window.location.pathname.split('/').slice(-1)[0];
-    var bookToDelete = $(this)['context']['classList'][3];
+    if (confirm('Are you sure you want to delete this book?')) {
+      var id = window.location.pathname.split('/').slice(-1)[0];
+      var bookToDelete = $(this)['context']['classList'][3];
 
-    $.ajax({
-      url: `/bookshelf/${id}.json`,
-      data: {'delete_id': bookToDelete},
-      type: 'PATCH'
-    })
-
-    $.getJSON(`/bookshelf/${id}.json`, function(res) {
-      $('.all-the-books .row').html('');
-      var allBooks = res.books;
-
-      for (var i = 0; i < allBooks.length; i++) {
-        $('.all-the-books .row').append(formatShelf(allBooks[i]));
-        }
+      $.ajax({
+        url: `/bookshelf/${id}.json`,
+        data: {'delete_id': bookToDelete},
+        type: 'PATCH'
       })
+
+      $.getJSON(`/bookshelf/${id}.json`, function(res) {
+        $('.all-the-books .row').html('');
+        var allBooks = res.books;
+        $('.book-count').text(`${allBooks.length}`);
+        for (var i = 0; i < allBooks.length; i++) {
+          $('.all-the-books .row').append(formatShelf(allBooks[i]));
+          }
+        })
+      }
 })
 
 

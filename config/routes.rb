@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :bookshelves, path: 'bookshelf'
   resources :books, only: [:show]
+  resources :wishlist
 
   # devise_for :users, :controllers => { :registrations => 'members' }
   #

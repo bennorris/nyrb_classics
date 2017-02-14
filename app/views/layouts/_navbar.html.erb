@@ -1,13 +1,19 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <ul class="nav nav-pills">
     <li role="presentation"><a href="/">home</a></li>
-    <% if current_user  && current_user.bookshelf%>
+    <% if current_user  && current_user.bookshelf && current_user.wishlist%>
       <li role="presentation"><%=link_to "my bookshelf", bookshelf_path(current_user.bookshelf.id) %></li>
       <li role="presentation"><%=link_to "add books", edit_bookshelf_path(current_user.bookshelf.id) %></li>
+      <li role="presentation"><%=link_to "my wishlist", wishlist_path(current_user.wishlist.id) %> </li>
+      <li role="presentation"><%=link_to "log out", destroy_user_session_path, method: 'delete' %></li>
+    <% elsif current_user  && current_user.bookshelf%>
+      <li role="presentation"><%=link_to "my bookshelf", bookshelf_path(current_user.bookshelf.id) %></li>
+      <li role="presentation"><%=link_to "add books", edit_bookshelf_path(current_user.bookshelf.id) %></li>
+      <li role="presentation"><%=link_to "create a wishlist", new_wishlist_path%> </li>
       <li role="presentation"><%=link_to "log out", destroy_user_session_path, method: 'delete' %></li>
     <% elsif current_user %>
-    <li role="presentation"><%=link_to "create bookshelf", new_bookshelf_path%></li>
-    <li role="presentation"><%=link_to "log out", destroy_user_session_path, method: 'delete' %></li>
+      <li role="presentation"><%=link_to "create bookshelf", new_bookshelf_path%></li>
+      <li role="presentation"><%=link_to "log out", destroy_user_session_path, method: 'delete' %></li>
     <% else %>
       <li role="presentation"><%=link_to "log in", new_user_session_path %></li>
       <li role="presentation"><%=link_to "sign up", new_user_registration_path %></li>
